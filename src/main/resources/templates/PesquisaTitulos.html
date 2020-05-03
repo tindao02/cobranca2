@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="LayoutPadrao">
+<head>
+	<title>Pesquisa de títulos</title>
+</head>
+
+	<!-- Parte que irá ser incorporada ao layout padrão -->
+	<section layout:fragment="conteudo">
+		
+		<!-- Painel -->
+		<div class="panel panel-default">
+			<div class="panel-heading"> 
+				<div class="clearfix"> <!-- Class para concertar o espaço -->
+		   			<h1 class="panel-title aw-titulo-panel">Pesquisa de títulos</h1>
+		   			<a class="btn btn-link aw-link-panel" href="/titulos/novo">Novo título</a>
+		   		</div>
+		   	</div>
+		   	
+		   	<!-- Início do corpo do painel -->
+		   	<div class="panel-body">
+		   		<!-- Início da Tabela -->
+		   		<table class="table table-bordered table-striped">
+		   			<thead>
+		   				<tr>
+		   					<th class="text-center col-md-1">#</th>
+		   					<th>Decrição</th>
+		   					<th class="text-center col-md-2">Data de vencimento</th>
+		   					<th class="text-right col-md-2">Valor</th>
+		   					<th class="text-center col-md-2">Status</th>
+		   					<th class="col-md-1"></th>
+		   				</tr>
+		   			</thead>
+		   			<tbody>
+		   				<tr>
+		   					<td colspan="6">Nenhum título foi encontrado</td>
+		   				</tr>
+		   			</tbody>
+		   		</table> <!-- Fim da Tabela -->
+		   	</div> <!-- Fim do corpo do painel -->
+		</div> <!-- Fim Painel -->
+		
+	</section> <!-- Fim do conteúdo a ser encorporado ao Layout Padrão -->
+
+</html>
