@@ -3,6 +3,7 @@ package com.tindao.cobranca2.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -11,10 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
 
-@EntityScan
-public class Titulos 
+@Entity
+public class Titulo 
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,44 +25,55 @@ public class Titulos
 	private String descricao;
 	
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date dataVencimento;
 	
+	@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal valor;
 	
 	@Enumerated(EnumType.STRING)
 	private StatusTitulo status;
-	
+
 	public Long getCodigo() {
 		return codigo;
 	}
+
 	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
+
 	public String getDescricao() {
 		return descricao;
 	}
+
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+
 	public Date getDataVencimento() {
 		return dataVencimento;
 	}
+
 	public void setDataVencimento(Date dataVencimento) {
 		this.dataVencimento = dataVencimento;
 	}
+
 	public BigDecimal getValor() {
 		return valor;
 	}
+
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
+
 	public StatusTitulo getStatus() {
 		return status;
 	}
+
 	public void setStatus(StatusTitulo status) {
 		this.status = status;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -68,6 +81,7 @@ public class Titulos
 		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -76,7 +90,7 @@ public class Titulos
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Titulos other = (Titulos) obj;
+		Titulo other = (Titulo) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;
@@ -84,4 +98,6 @@ public class Titulos
 			return false;
 		return true;
 	}
+	
+	
 }
