@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tindao.cobranca2.model.StatusTitulo;
 import com.tindao.cobranca2.model.Titulo;
@@ -40,17 +41,16 @@ public class TitulosController
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView salvar(@Validated Titulo titulo, Errors erros)
+	public String salvar(@Validated Titulo titulo, Errors erros, RedirectAttributes attributes)
 	{
-		ModelAndView mv = new ModelAndView("CadastroTitulos");
 		if(erros.hasErrors())
 		{
-			return (mv);
+			return ("CadastroTitulos");
 		}
 		titulos.save(titulo);
 		
-		mv.addObject("mensagem", "Título salvo com sucesso!");
-		return (mv);
+		attributes.addFlashAttribute("mensagem", "Título salvo com sucesso!");
+		return ("redirect:/titulos/novo");
 	}
 	
 	@ModelAttribute("todosStatusTitulo")
